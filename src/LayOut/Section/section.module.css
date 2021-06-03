@@ -1,0 +1,15 @@
+.section {
+  width: 250px;
+}
+
+.section:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.section__header {
+  margin: 0;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-color-2);
+}

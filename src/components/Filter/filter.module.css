@@ -1,0 +1,64 @@
+.filterLabelBlock {
+  display: block;
+  width: 100%;
+  position: relative;
+  font-size: 14px;
+  border-top: 15px solid transparent;
+  margin-bottom: 5px;
+  --field-padding: 6px 10px;
+}
+
+.filterInput {
+  appearance: none;
+  background-color: #151515;
+  padding: var(--field-padding);
+  border-radius: 3px;
+  width: 250px;
+  outline: none;
+  font-size: 14px;
+  color: #fff;
+  border: 2px solid var(--text-color-2);
+  cursor: pointer;
+  transition: border 0.2s ease;
+}
+
+.filterInput:hover,
+.filterInput:focus,
+.filterInput:active {
+  border: 2px solid var(--accent-color);
+}
+
+.filterInput:-webkit-autofill {
+  box-shadow: 0 0 0 1000px #151515 inset !important;
+  -webkit-text-fill-color: var(--text-color-2) !important;
+}
+
+.placeholder {
+  position: absolute;
+  left: var(--field-padding);
+  width: fit-content;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  top: 14px;
+  line-height: 100%;
+  transform: translateY(-50%);
+  color: var(--text-color-2);
+  opacity: 0.7;
+  transition: opacity 0.3s ease, top 0.3s ease, font-size 0.3s ease;
+}
+
+.filterInput + .placeholder {
+  left: 8px;
+  padding: 0 5px;
+  background-color: #151515;
+}
+
+.filterInput.dirty + .placeholder,
+.filterInput:not(:placeholder-shown) + .placeholder,
+.filterInput:focus + .placeholder {
+  top: -3px;
+  font-size: 11px;
+  opacity: 1;
+}

@@ -1,0 +1,39 @@
+.navOutContainer {
+  /* margin-left: auto; */
+  color: var(--accent-color);
+  letter-spacing: 1px;
+}
+
+.name {
+  color: var(--accent-color);
+  margin-right: 40px;
+  font-style: italic;
+}
+
+.name span {
+  font-size: 20px;
+  font-style: normal;
+}
+
+.button {
+  font-size: 14px;
+  padding: 3px 5px;
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color-2);
+  background: transparent;
+}
+
+.button:hover {
+  color: var(--accent-color);
+}
+
+@media only screen and (max-width: 620px) {
+  .name {
+    margin-right: 20px;
+  }
+} ;

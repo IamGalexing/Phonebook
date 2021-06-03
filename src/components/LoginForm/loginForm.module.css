@@ -1,0 +1,95 @@
+.contactForm {
+  width: 250px;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  margin: 0 0 15px;
+  letter-spacing: 1px;
+  font-size: 25px;
+  color: var(--text-color-2);
+  text-transform: uppercase;
+}
+
+.contactForm__btn {
+  outline: none;
+  margin-top: 30px;
+  font-size: 14px;
+  padding: 10px;
+  width: 50%;
+  font-weight: bold;
+  border-radius: 3px;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  background-color: transparent;
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.contactForm__btn:hover {
+  color: #151515;
+  background-color: var(--accent-color);
+}
+
+.contactForm__label {
+  position: relative;
+  font-size: 14px;
+  border-top: 20px solid transparent;
+  margin-bottom: 5px;
+  --field-padding: 10px;
+}
+
+.contactForm__input {
+  appearance: none;
+  background-color: #151515;
+  padding: var(--field-padding);
+  border-radius: 3px;
+  width: 250px;
+  outline: none;
+  font-size: 14px;
+  color: var(--text-color-2);
+  border: 2px solid var(--accent-color);
+  cursor: pointer;
+}
+
+.contactForm__input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px #151515 inset !important;
+  -webkit-text-fill-color: var(--text-color-2) !important;
+}
+
+.placeholder {
+  position: absolute;
+  left: var(--field-padding);
+  width: fit-content;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  top: 20px;
+  line-height: 100%;
+  transform: translateY(-50%);
+  color: var(--text-color-2);
+  opacity: 0.7;
+  transition: opacity 0.3s ease, top 0.3s ease, color 0.3s ease,
+    font-size 0.3s ease;
+}
+
+.contactForm__input + .placeholder {
+  left: 8px;
+  padding: 0 5px;
+  background-color: #151515;
+}
+
+.contactForm__input:not(:placeholder-shown) + .placeholder,
+.contactForm__input:focus + .placeholder {
+  top: -3px;
+  font-size: 12px;
+  opacity: 1;
+}

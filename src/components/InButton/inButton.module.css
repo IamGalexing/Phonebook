@@ -1,0 +1,13 @@
+.link {
+  padding: 20px 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-color-2);
+  cursor: pointer;
+}
+
+.activeLink,
+.link:hover {
+  color: var(--accent-color);
+}

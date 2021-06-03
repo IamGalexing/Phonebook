@@ -1,0 +1,11 @@
+:root {
+  --accent-color: #f7e852;
+  --text-color: #b4a5a5;
+  --text-color-2: #c5d8dd;
+  --bg-color: #151515;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+}
