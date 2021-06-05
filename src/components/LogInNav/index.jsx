@@ -4,8 +4,8 @@ import styles from './logInNav.module.css';
 const LogInNav = () => {
   return (
     <div className={styles.navInContainer}>
-      <InButton title="login" />
-      <InButton title="register" />
+      <InButton row="login" />
+      <InButton row="register" />
     </div>
   );
 };

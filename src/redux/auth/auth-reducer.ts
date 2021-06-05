@@ -5,72 +5,76 @@ import {
   authLogOut,
   authCurrentUser,
 } from './auth-operations';
+import { TAuth } from '../intefaces/auth';
+
+const initialState = {
+  user: { name: '', email: '' },
+  token: '',
+  isLoggedIn: false,
+  isFetchingCurrentUser: false,
+  error: false,
+} as TAuth;
 
 const authSlice = createSlice({
   name: 'auth',
-  initialState: {
-    user: { name: '', email: '' },
-    token: '',
-    isLoggedIn: false,
-    isFetchingCurrentUser: false,
-    error: false,
-  },
-  extraReducers: {
-    [authSignUp.pending]: (state, action) => {
+  initialState,
+  reducers: {},
+  extraReducers: builder => {
+    builder.addCase(authSignUp.pending, (state, _) => {
       state.isLoggedIn = false;
       state.error = false;
-    },
-    [authSignUp.fulfilled]: (state, action) => {
+    });
+    builder.addCase(authSignUp.fulfilled, (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
-    },
-    [authSignUp.rejected]: (state, action) => {
+    });
+    builder.addCase(authSignUp.rejected, (state, _) => {
       state.isLoggedIn = false;
       state.error = true;
-    },
-    [authLogin.pending]: (state, action) => {
+    });
+    builder.addCase(authLogin.pending, (state, _) => {
       state.isLoggedIn = false;
       state.error = false;
-    },
-    [authLogin.fulfilled]: (state, action) => {
+    });
+    builder.addCase(authLogin.fulfilled, (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
-    },
-    [authLogin.rejected]: (state, _) => {
+    });
+    builder.addCase(authLogin.rejected, (state, _) => {
       state.isLoggedIn = false;
       state.error = true;
-    },
-    [authLogOut.pending]: (state, _) => {
+    });
+    builder.addCase(authLogOut.pending, (state, _) => {
       state.error = false;
-    },
-    [authLogOut.fulfilled]: (state, _) => {
+    });
+    builder.addCase(authLogOut.fulfilled, (state, _) => {
       state.user = { name: '', email: '' };
       state.token = '';
       state.isLoggedIn = false;
       state.error = false;
-    },
-    [authLogOut.rejected]: (state, _) => {
+    });
+    builder.addCase(authLogOut.rejected, (state, _) => {
       state.isLoggedIn = true;
       state.error = true;
-    },
-    [authCurrentUser.pending]: (state, _) => {
+    });
+    builder.addCase(authCurrentUser.pending, (state, _) => {
       state.isFetchingCurrentUser = true;
       state.error = false;
-    },
-    [authCurrentUser.fulfilled]: (state, action) => {
+    });
+    builder.addCase(authCurrentUser.fulfilled, (state, action) => {
       state.user = action.payload;
       state.isFetchingCurrentUser = false;
       state.isLoggedIn = true;
       state.error = false;
-    },
-    [authCurrentUser.rejected]: (state, _) => {
+    });
+    builder.addCase(authCurrentUser.rejected, (state, _) => {
       state.user = { name: '', email: '' };
       state.isFetchingCurrentUser = false;
       state.isLoggedIn = false;
       state.error = false;
-    },
+    });
   },
 });
 

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { getAmountOfContacts } from 'redux/contacts';
+import { getAmountOfContacts } from '../../redux/contacts';
 import styles from './amountContacts.module.css';
 
 const AmountContacts = () => {

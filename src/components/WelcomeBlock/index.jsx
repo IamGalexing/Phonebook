@@ -19,11 +19,11 @@ const WelcomeBlock = () => {
           <p className={styles.toStart}>
             Please
             <span className={styles.button}>
-              <InButton title="login" />
+              <InButton row="login" />
             </span>
             or
             <span className={styles.button}>
-              <InButton title="register" />
+              <InButton row="register" />
             </span>
             to start.
           </p>

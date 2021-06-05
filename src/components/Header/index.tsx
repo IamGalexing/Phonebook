@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import Logo from '../Logo';
 import LogInNav from '../LogInNav';
 import LogOutNav from '../LogOutNav';
-import { getIsLoggedIn } from 'redux/auth';
+import { getIsLoggedIn } from '../../redux/auth';
 // import styles from './header.module.css';
 
 const Header = () => {
@@ -12,7 +12,6 @@ const Header = () => {
     headWrap: {
       padding: '20px 0',
       display: 'flex',
-      flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
       borderBottom: '1px solid var(--text-color-2)',

@@ -6,73 +6,77 @@ import {
   deleteContact,
   updateContact,
 } from './contacts-operations';
+import { TContacts } from '../intefaces/contacts';
+
+const initialState = {
+  items: [],
+  filter: '',
+  loading: false,
+  error: null,
+} as TContacts;
 
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: {
-    items: [],
-    filter: '',
-    loading: false,
-    error: null,
-  },
-  extraReducers: {
-    [filterContacts]: (state, action) => {
+  initialState,
+  reducers: {},
+  extraReducers: builder => {
+    builder.addCase(filterContacts, (state, action) => {
       state.filter = action.payload;
-    },
-    [getContactsList.pending]: (state, action) => {
+    });
+    builder.addCase(getContactsList.pending, (state, _) => {
       state.loading = true;
       state.error = null;
-    },
-    [getContactsList.fulfilled]: (state, action) => {
+    });
+    builder.addCase(getContactsList.fulfilled, (state, action) => {
       state.items = action.payload;
       state.loading = false;
-    },
-    [getContactsList.rejected]: (state, action) => {
+    });
+    builder.addCase(getContactsList.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
-    },
-    [addContact.pending]: (state, action) => {
+    });
+    builder.addCase(addContact.pending, (state, _) => {
       state.loading = true;
       state.error = null;
-    },
-    [addContact.fulfilled]: (state, action) => {
+    });
+    builder.addCase(addContact.fulfilled, (state, action) => {
       state.items = [action.payload, ...state.items];
       state.loading = false;
       state.error = null;
-    },
-    [addContact.rejected]: (state, action) => {
+    });
+    builder.addCase(addContact.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
-    },
-    [deleteContact.pending]: (state, action) => {
+    });
+    builder.addCase(deleteContact.pending, (state, _) => {
       state.loading = true;
       state.error = null;
-    },
-    [deleteContact.fulfilled]: (state, action) => {
+    });
+    builder.addCase(deleteContact.fulfilled, (state, action) => {
       state.items = state.items.filter(
         contact => contact.id !== action.payload,
       );
       state.loading = false;
       state.error = null;
-    },
-    [deleteContact.rejected]: (state, action) => {
+    });
+    builder.addCase(deleteContact.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
-    },
-    [updateContact.pending]: (state, action) => {
+    });
+    builder.addCase(updateContact.pending, (state, _) => {
       state.loading = true;
       state.error = null;
-    },
-    [updateContact.fulfilled]: (state, action) => {
+    });
+    builder.addCase(updateContact.fulfilled, (state, action) => {
       state.items = state.items.map(item =>
         item.id === action.payload.id ? action.payload : item,
       );
       state.loading = false;
-    },
-    [updateContact.rejected]: (state, action) => {
+    });
+    builder.addCase(updateContact.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
-    },
+    });
   },
 });
 

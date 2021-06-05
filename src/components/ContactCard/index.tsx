@@ -3,10 +3,11 @@ import { useDispatch } from 'react-redux';
 import ModalUpdate from '../ModalUpdate';
 import { ReactComponent as DeleteIcon } from '../../images/garbage.svg';
 import { ReactComponent as ModifyContact } from '../../images/sheet.svg';
-import { deleteContact } from 'redux/contacts';
+import { deleteContact } from '../../redux/contacts';
+import { TItem } from '../../redux/intefaces/contacts';
 import styles from './contactCard.module.css';
 
-const ContactCard = ({ name, number, id }) => {
+const ContactCard = ({ name, number, id }: TItem) => {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 

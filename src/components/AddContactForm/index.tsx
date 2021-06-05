@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact, getContacts } from 'redux/contacts';
+import { addContact, getContacts } from '../../redux/contacts';
 import styles from './addContactForm.module.css';
 
 const AddContactForm = () => {
@@ -9,13 +9,15 @@ const AddContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const onChangeInput = ({ target }) => {
+  const onChangeInput = ({
+    target,
+  }: React.ChangeEvent<HTMLInputElement>): void => {
     target.name === 'name'
       ? setName(target.value)
       : setNumber(target.value);
   };
 
-  const onSubmitForm = evt => {
+  const onSubmitForm = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     contacts.some(contact => contact.name === name)
       ? alert(`${name} is already in the contact's list.`)
@@ -38,9 +40,8 @@ const AddContactForm = () => {
           type="text"
           name="name"
           value={name}
-          pattern=".*[^ ].*"
+          pattern=".{1,}&*[^ ].*"
           title="The name has to contain at least 2 symbols and not only spaces"
-          minLength="2"
           required
         />
         <span className={styles.placeholder}>enter name</span>

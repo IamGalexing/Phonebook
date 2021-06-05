@@ -5,5 +5,3 @@ export const contactsPersistConfig = {
   storage,
   whitelist: ['token'],
 };
-
-// export default contactsPersistConfig;

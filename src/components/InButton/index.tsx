@@ -1,17 +1,17 @@
 import { NavLink } from 'react-router-dom';
 import styles from './inButton.module.css';
 
-const inButton = ({ title = '/' }) => {
+const InButton = ({ row = '/' }) => {
   return (
     <NavLink
-      to={`/${title}`}
+      to={`/${row}`}
       exact
       className={styles.link}
       activeClassName={styles.activeLink}
     >
-      {title}
+      {row}
     </NavLink>
   );
 };
 
-export default inButton;
+export default InButton;

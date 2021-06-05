@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getName, authLogOut } from 'redux/auth';
+import { getName, authLogOut } from '../../redux/auth';
 import styles from './logOutNav.module.css';
 
 const LogOutNav = () => {

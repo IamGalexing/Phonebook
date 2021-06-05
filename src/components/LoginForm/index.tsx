@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { authLogin } from 'redux/auth';
+import { authLogin } from '../../redux/auth';
 import styles from './loginForm.module.css';
 
 const LoginForm = () => {
@@ -8,13 +8,15 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
-  const onChangeInput = ({ target }) => {
+  const onChangeInput = ({
+    target,
+  }: React.ChangeEvent<HTMLInputElement>) => {
     target.name === 'email'
       ? setEmail(target.value)
       : setPassword(target.value);
   };
 
-  const onSubmitForm = evt => {
+  const onSubmitForm = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     dispatch(authLogin({ email, password }));
     setEmail('');

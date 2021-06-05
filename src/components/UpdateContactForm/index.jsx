@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateContact, getContacts } from 'redux/contacts';
+import { updateContact, getContacts } from '../../redux/contacts';
 import styles from './updateContactForm.module.css';
 
 const UpdateContactForm = ({ id, name, number, onClose }) => {
