@@ -3,19 +3,28 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateContact, getContacts } from '../../redux/contacts';
 import styles from './updateContactForm.module.css';
 
-const UpdateContactForm = ({ id, name, number, onClose }) => {
+interface Props {
+  id: string;
+  name: string;
+  number: string;
+  onClose: () => void;
+}
+
+const UpdateContactForm = ({ id, name, number, onClose }: Props) => {
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
   const [nameNew, setNameNew] = useState(name);
   const [numberNew, setNumberNew] = useState(number);
 
-  const onChangeInput = ({ target }) => {
+  const onChangeInput = ({
+    target,
+  }: React.ChangeEvent<HTMLInputElement>) => {
     target.name === 'name'
       ? setNameNew(target.value)
       : setNumberNew(target.value);
   };
 
-  const onSubmitForm = evt => {
+  const onSubmitForm = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     contacts.some(
       contact => contact.name === nameNew && contact.id !== id,
@@ -39,9 +48,8 @@ const UpdateContactForm = ({ id, name, number, onClose }) => {
           type="text"
           name="name"
           value={nameNew}
-          pattern=".*[^ ].*"
+          pattern=".{1,}&.*[^ ].*"
           title="The name has to contain at least 2 symbols and not only spaces"
-          minLength="2"
           required
         />
         <span className={styles.placeholder}>enter name</span>

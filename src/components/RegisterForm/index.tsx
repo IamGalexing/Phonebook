@@ -9,7 +9,9 @@ const RegisterForm = () => {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
-  const onChangeInput = ({ target }) => {
+  const onChangeInput = ({
+    target,
+  }: React.ChangeEvent<HTMLInputElement>) => {
     switch (target.name) {
       case 'name':
         return setName(target.value);
@@ -22,7 +24,7 @@ const RegisterForm = () => {
     }
   };
 
-  const onSubmitForm = evt => {
+  const onSubmitForm = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     dispatch(authSignUp({ name, email, password }));
     setName('');

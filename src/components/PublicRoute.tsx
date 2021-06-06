@@ -1,8 +1,15 @@
 import { useSelector } from 'react-redux';
-import { Redirect, Route } from 'react-router';
+import { Redirect, Route, RouteProps } from 'react-router';
 import { getIsLoggedIn } from '../redux/auth';
 
-const PublicRoute = ({ children, ...routeProps }) => {
+type TChildren = {
+  children: JSX.Element | JSX.Element[];
+};
+
+const PublicRoute = ({
+  children,
+  ...routeProps
+}: RouteProps & TChildren) => {
   const isLoggedIn = useSelector(getIsLoggedIn);
 
   return (
