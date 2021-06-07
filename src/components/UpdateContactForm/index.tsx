@@ -48,7 +48,7 @@ const UpdateContactForm = ({ id, name, number, onClose }: Props) => {
           type="text"
           name="name"
           value={nameNew}
-          pattern=".{1,}&.*[^ ].*"
+          pattern=".{1,}&*[^ ].*"
           title="The name has to contain at least 2 symbols and not only spaces"
           required
         />

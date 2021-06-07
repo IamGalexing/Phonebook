@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { authLogin } from '../../redux/auth';
 import styles from './loginForm.module.css';
@@ -16,12 +16,15 @@ const LoginForm = () => {
       : setPassword(target.value);
   };
 
-  const onSubmitForm = (evt: React.FormEvent<HTMLFormElement>) => {
-    evt.preventDefault();
-    dispatch(authLogin({ email, password }));
-    setEmail('');
-    setPassword('');
-  };
+  const onSubmitForm = useCallback(
+    (evt: React.FormEvent<HTMLFormElement>) => {
+      evt.preventDefault();
+      dispatch(authLogin({ email, password }));
+      setEmail('');
+      setPassword('');
+    },
+    [dispatch, email, password],
+  );
 
   return (
     <form className={styles.contactForm} onSubmit={onSubmitForm}>

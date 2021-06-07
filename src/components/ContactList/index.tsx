@@ -6,9 +6,8 @@ import {
   getIsLoading,
 } from '../../redux/contacts';
 import Loader from '../Loader';
-import styles from './contactList.module.css';
-
 import ContactCard from '../ContactCard';
+import styles from './contactList.module.css';
 
 const ContactList = () => {
   const contacts = useSelector(getContactsToShow);
@@ -16,7 +15,7 @@ const ContactList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getContactsList);
+    dispatch(getContactsList());
   }, [dispatch]);
 
   return (

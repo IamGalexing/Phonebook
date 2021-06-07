@@ -1,5 +1,5 @@
 import { createPortal } from 'react-dom';
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import UpdateContactForm from '../UpdateContactForm';
 import styles from './modalUpdate.module.css';
 
@@ -15,16 +15,18 @@ interface Props {
 }
 
 const ModalUpdate = (props: Props) => {
+  const handleEscapeBtn = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.code === 'Escape') props.onClose();
+    },
+    [props],
+  );
+
   useEffect(() => {
     window.addEventListener('keydown', handleEscapeBtn);
     return () =>
       window.removeEventListener('keydown', handleEscapeBtn);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  function handleEscapeBtn(e: KeyboardEvent) {
-    console.log('ESC pressed');
-    if (e.code === 'Escape') props.onClose();
-  }
+  }, [handleEscapeBtn]);
 
   return createPortal(
     <div className={styles.Overlay}>

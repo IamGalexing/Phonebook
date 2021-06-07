@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import ModalUpdate from '../ModalUpdate';
 import { ReactComponent as DeleteIcon } from '../../images/garbage.svg';
@@ -11,9 +11,14 @@ const ContactCard = ({ name, number, id }: TItem) => {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
-  const toggleModal = () => {
+  const toggleModal = useCallback(() => {
     setShowModal(!showModal);
-  };
+  }, [showModal]);
+
+  const handleDeleteContact = useCallback(
+    () => dispatch(deleteContact(id)),
+    [dispatch, id],
+  );
 
   return (
     <div className={styles.card}>
@@ -34,7 +39,7 @@ const ContactCard = ({ name, number, id }: TItem) => {
           type="button"
           id={id}
           title="delete contact"
-          onClick={() => dispatch(deleteContact(id))}
+          onClick={handleDeleteContact}
         >
           <DeleteIcon />
         </button>

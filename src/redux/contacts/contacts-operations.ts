@@ -4,13 +4,13 @@ import { TItem, TUpdateItem, TUser } from '../intefaces/contacts';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-export const getContactsList = createAsyncThunk<
-  TItem[],
-  { rejectValue: string }
->('contacts/getContactsList', async () => {
-  const { data } = await axios.get('/contacts');
-  return data;
-});
+export const getContactsList = createAsyncThunk<TItem[]>(
+  'contacts/getContactsList',
+  async () => {
+    const { data } = await axios.get('/contacts');
+    return data;
+  },
+);
 
 export const addContact = createAsyncThunk<
   TItem,
@@ -21,8 +21,8 @@ export const addContact = createAsyncThunk<
     name,
     number,
   };
-
   const { data } = await axios.post('/contacts', contact);
+  console.log('return', data);
   return data;
 });
 
