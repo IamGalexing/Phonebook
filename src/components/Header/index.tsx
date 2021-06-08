@@ -3,24 +3,24 @@ import Logo from '../Logo';
 import LogInNav from '../LogInNav';
 import LogOutNav from '../LogOutNav';
 import { getIsLoggedIn } from '../../redux/auth';
-// import styles from './header.module.css';
+import styles from './header.module.css';
+
+// const styles = {
+//   headWrap: {
+//     padding: '20px 0',
+//     display: 'flex',
+//     justifyContent: 'space-between',
+//     alignItems: 'center',
+//     borderBottom: '1px solid var(--text-color-2)',
+//   },
+// };
 
 const Header = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
 
-  const styles = {
-    headWrap: {
-      padding: '20px 0',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      borderBottom: '1px solid var(--text-color-2)',
-    },
-  };
-
   return (
     <>
-      <div style={styles.headWrap}>
+      <div className={styles.headWrap}>
         <Logo />
         {isLoggedIn ? <LogOutNav /> : <LogInNav />}
       </div>

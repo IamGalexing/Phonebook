@@ -22,6 +22,7 @@
   transition: border 0.2s ease;
 }
 
+.active,
 .filterInput:hover,
 .filterInput:focus,
 .filterInput:active {

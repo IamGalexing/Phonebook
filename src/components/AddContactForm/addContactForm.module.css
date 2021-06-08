@@ -27,13 +27,10 @@
   cursor: pointer;
 }
 
+.active,
 .contactForm__input:hover,
 .contactForm__input:focus,
 .contactForm__input:active {
-  border-color: var(--accent-color);
-}
-
-.dirty {
   border-color: var(--accent-color);
 }
 

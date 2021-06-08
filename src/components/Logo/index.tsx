@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ReactComponent as LogoBook } from '../../images/booked.svg';
 import styles from './logo.module.css';
@@ -13,4 +14,4 @@ const Logo = () => (
   </div>
 );
 
-export default Logo;
+export default memo(Logo);

@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import ClassNames from 'classnames';
 import { addContact, getContacts } from '../../redux/contacts';
 import styles from './addContactForm.module.css';
 
 const AddContactForm = () => {
-  const contacts = useSelector(getContacts);
-  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
 
   const onChangeInput = ({
     target,
@@ -34,7 +35,9 @@ const AddContactForm = () => {
     <form className={styles.contactForm} onSubmit={onSubmitForm}>
       <label className={styles.contactForm__label}>
         <input
-          className={styles.contactForm__input}
+          className={ClassNames(styles.contactForm__input, {
+            [styles.active]: name.length,
+          })}
           onChange={onChangeInput}
           placeholder="&nbsp;"
           type="text"
@@ -48,7 +51,9 @@ const AddContactForm = () => {
       </label>
       <label className={styles.contactForm__label}>
         <input
-          className={styles.contactForm__input}
+          className={ClassNames(styles.contactForm__input, {
+            [styles.active]: number.length,
+          })}
           onChange={onChangeInput}
           placeholder="&nbsp;"
           type="tel"
