@@ -1,4 +1,4 @@
-# Phonebook app
+# :heavy_check_mark: Phonebook app
 
 ## Hold all your phone contacts at one place online.
 
